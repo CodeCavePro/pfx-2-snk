@@ -63,9 +63,9 @@ namespace CodeCave.Utility.Windows.Pfx2Snk
             try
             {
                 var pfxContent = File.ReadAllBytes(pfxFilePath);
-                var pfxCert = new X509Certificate2(pfxContent, password, X509KeyStorageFlags.Exportable);
+                var pfxCert = new X509Certificate2(pfxContent, password, X509KeyStorageFlags.Exportable | X509KeyStorageFlags.PersistKeySet);
                 var pfxPrivateKey = pfxCert.PrivateKey as RSACryptoServiceProvider;
-                return pfxPrivateKey?.ExportCspBlob(true) ?? new byte[0];
+                return pfxPrivateKey?.ExportCspBlob(!pfxPrivateKey.PublicOnly) ?? new byte[0];
             }
             catch (Exception ex)
             {
