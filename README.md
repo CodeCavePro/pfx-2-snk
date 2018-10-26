@@ -1,3 +1,4 @@
-# Pfx2Snk
+Pfx2Snk
+=======
 
-Generates an SNK key out of PFX certificate
+Generates an SNK key file out of a PFX certificate
